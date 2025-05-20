@@ -1,3 +1,81 @@
+interface IShape {
+    float PI = 3.1416f;
+
+    void showInfo();
+    float getArea();
+    float getPerimeter();
+}
+
+class Circle implements IShape {
+    private float radius;
+
+    public Circle(float radius) {
+        this.radius = radius;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public float getArea() {
+        return PI * radius * radius;
+    }
+
+    @Override
+    public float getPerimeter() {
+        return 2 * PI * radius;
+    }
+
+    @Override
+    public void showInfo() {
+        System.out.println("Circle with radius " + radius + 
+            " has area: " + getArea() + " and perimeter: " + getPerimeter());
+    }
+}
+
+class Rectangle implements IShape {
+    public double width;
+    public double length;
+
+    public Rectangle(double width, double length) {
+        this.width = width;
+        this.length = length;
+    }
+
+    @Override
+    public float getArea() {
+        return (float)(width * length);
+    }
+
+    @Override
+    public float getPerimeter() {
+        return (float)(2 * (width + length));
+    }
+
+    @Override
+    public void showInfo() {
+        System.out.println("Rectangle with width " + width + " and length " + length +
+            " has area: " + getArea() + " and perimeter: " + getPerimeter());
+    }
+}
+
+public class FirstProgram {
+    public static void main(String[] args) {
+        Circle c = new Circle(25.5f);
+        Rectangle r = new Rectangle(5, 12);
+
+        c.showInfo();
+        r.showInfo();
+    }
+}
+
+
+
 import java.time.LocalDate;
 
 
