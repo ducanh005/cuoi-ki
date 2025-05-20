@@ -338,3 +338,109 @@ public static void cau5() {
         entry.getValue().showInfo();
     }
 }
+
+import java.util.*;
+
+public class WordCountSimple {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Nhập câu:");
+        String line = sc.nextLine();
+
+        String[] words = line.split(" ");
+        Map<String, Integer> map = new HashMap<>();
+
+        for (String word : words) {
+            if (map.containsKey(word)) {
+                map.put(word, map.get(word) + 1);
+            } else {
+                map.put(word, 1);
+            }
+        }
+
+        System.out.println("Kết quả:");
+        for (String key : map.keySet()) {
+            System.out.println(key + ": " + map.get(key));
+        }
+    }
+}
+
+
+import java.util.*;
+
+public class MaxFinder {
+    public static <T extends Comparable<T>> T findMax(Set<T> set) {
+        if (set == null || set.isEmpty()) {
+            return null;
+        }
+
+        T max = null;
+        for (T element : set) {
+            if (max == null || element.compareTo(max) > 0) {
+                max = element;
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        Set<Integer> numbers = new HashSet<>(Arrays.asList(3, 9, 2, 5, 7));
+        Integer maxNumber = findMax(numbers);
+        System.out.println("Max: " + maxNumber);
+
+        Set<String> names = new HashSet<>(Arrays.asList("An", "Binh", "Cuong"));
+        String maxName = findMax(names);
+        System.out.println("Max name: " + maxName);
+
+        Set<Integer> emptySet = new HashSet<>();
+        System.out.println("Empty set max: " + findMax(emptySet));
+    }
+}
+
+import java.util.*;
+
+public class DuplicateNumbers {
+    public static void main(String[] args) {
+        List<Integer> list = Arrays.asList(2, 3, 5, 2, 7, 3, 8, 3, 9);
+
+        Map<Integer, Integer> countMap = new HashMap<>();
+
+        // Đếm số lần xuất hiện
+        for (int num : list) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        System.out.println("Các số bị lặp lại:");
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            if (entry.getValue() > 1) {
+                System.out.println(entry.getKey() + " xuất hiện " + entry.getValue() + " lần");
+            }
+        }
+    }
+}
+
+
+import java.util.*;
+
+public class ConvertStringsToIntegers {
+    public static void main(String[] args) {
+        List<String> stringList = Arrays.asList("10", "abc", "25", "5x", "100", "42");
+
+        List<Integer> intList = new ArrayList<>();
+
+        for (String s : stringList) {
+            try {
+                int number = Integer.parseInt(s);
+                intList.add(number);
+            } catch (NumberFormatException e) {
+                // Bỏ qua nếu không phải số nguyên
+            }
+        }
+
+        System.out.println("Danh sách số nguyên:");
+        for (int num : intList) {
+            System.out.println(num);
+        }
+    }
+}
+
